@@ -32,7 +32,11 @@ const LoginPage = () => {
        gap-8 sm:justify-evenly max:sm:flex-col backdrop-blur-2xl "
     >
       {/* ------------------------------left side------------------------ */}
-      <img src={assets.logo_big} alt="" className="w-[min(30vw,250px)]" />
+      <img
+        src={assets.logo_big}
+        alt=""
+        className="w-[min(30vw,250px)] bg-transparent"
+      />
       {/* ------------------------------right side------------------------ */}
       <form
         onSubmit={onSubmitHandler}
@@ -108,7 +112,7 @@ const LoginPage = () => {
 
         <div className="flex flex-col gap-2">
           {currState === "Sign Up" ? (
-            <p className="flex text-sm text-gray-600 gap-2">
+            <p className="flex text-sm text-white gap-2">
               Already have an account...?
               <span
                 onClick={() => {
@@ -121,7 +125,7 @@ const LoginPage = () => {
               </span>
             </p>
           ) : (
-            <p className="flex text-sm text-gray-600 gap-2">
+            <p className="flex text-sm text-white gap-2">
               Create an account
               <span
                 onClick={() => setCurrState("Sign Up")}
