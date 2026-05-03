@@ -1,19 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import assets from "../assets/assets";
 import { ChatContext } from "../../context/ChatContext";
 import { AuthContext } from "./../../context/AuthContext";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const RightContainer = () => {
   const { selectedUser, message } = useContext(ChatContext);
   const { logout, onlineUsers } = useContext(AuthContext);
-  const [msgImages, setMsgImages] = useState([]);
 
-  //get all the img from the messages and set them to state
-  useEffect(() => {
-    if (!message) return;
-    setMsgImages(message.filter((msg) => msg.image).map((msg) => msg.image));
+  const msgImages = useMemo(() => {
+    if (!message) return [];
+    return message.filter((msg) => msg.image).map((msg) => msg.image);
   }, [message]);
   // console.log(message);
 

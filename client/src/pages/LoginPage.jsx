@@ -28,19 +28,19 @@ const LoginPage = () => {
   };
   return (
     <div
-      className="min-h-screen bg-coverbg-center flex items-center justify-center
-       gap-8 sm:justify-evenly max:sm:flex-col backdrop-blur-2xl "
+      className="min-h-screen bg-cover bg-center flex items-center justify-center
+       gap-8 backdrop-blur-sm sm:justify-evenly max-sm:flex-col "
     >
       {/* ------------------------------left side------------------------ */}
       <img
         src={assets.logo_big}
         alt=""
-        className="w-[min(30vw,250px)] bg-transparent"
+        className="w-[min(30vw,400px)] max-sm:w-[300px]"
       />
       {/* ------------------------------right side------------------------ */}
       <form
         onSubmit={onSubmitHandler}
-        className="border-2 bg-white/8 text-white border-gray-500 p-6 flex 
+        className="border-2 bg-white/8 backdrop-blur-md text-white border-gray-500 p-6 flex 
       flex-col gap-6 rounded-lg shadow-lg "
       >
         <h2 className="font-medium text-2xl flex justify-between items-center">
@@ -106,7 +106,7 @@ const LoginPage = () => {
           {currState === "Sign Up" ? "Create Account" : "Login Now"}
         </button>
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <input type="checkbox" />
+          <input type="checkbox" required />
           <p>Agree to the terms of use & privacy policy</p>
         </div>
 
