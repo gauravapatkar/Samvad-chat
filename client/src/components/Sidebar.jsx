@@ -19,6 +19,7 @@ const Sidebar = () => {
   const { logout, onlineUsers } = useContext(AuthContext);
 
   const [input, setInput] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ const Sidebar = () => {
       <div className="pb-5">
         <div className="flex justify-between items-center">
           <img src={assets.logo} alt="logo" className="max-w-35" />
-          <div className="relative py-2 group ">
+          {/*    <div className="relative py-2 group ">
             <img
               src={assets.menu_icon}
               alt="menu"
@@ -63,6 +64,49 @@ const Sidebar = () => {
                 Logout
               </p>
             </div>
+          </div> */}
+          <div className="relative py-2">
+            {/* <img
+              src={assets.menu_icon}
+              alt="menu"
+              className="max-h-5 cursor-pointer"
+              onClick={() => setShowMenu((prev) => !prev)}
+            /> */}
+            <button
+              type="button"
+              onClick={() => setShowMenu((prev) => !prev)}
+              className="cursor-pointer"
+            >
+              <img src={assets.menu_icon} alt="menu" className="max-h-5" />
+            </button>
+            {showMenu && (
+              <div
+                className="absolute top-full right-0 z-50 w-32 p-5 rounded-md
+      bg-[#282142] border border-gray-700 text-gray-100"
+              >
+                <p
+                  onClick={() => {
+                    navigate("/Profile");
+                    setShowMenu(false);
+                  }}
+                  className="cursor-pointer text-sm"
+                >
+                  Edit Profile
+                </p>
+
+                <hr className="my-2 border-t border-gray-500" />
+
+                <p
+                  onClick={() => {
+                    logout();
+                    setShowMenu(false);
+                  }}
+                  className="cursor-pointer text-sm"
+                >
+                  Logout
+                </p>
+              </div>
+            )}
           </div>
         </div>
         <div className="bg-[#282142] rounded-full flex items-center gap-2 py-3 px-4 mt-5">
@@ -84,7 +128,7 @@ const Sidebar = () => {
               setUnseenMessage((prev) => ({ ...prev, [user._id]: 0 }));
             }}
             key={index}
-            className={` relative flex items-center gap-2 p-2 p1-4 rounded cursor-pointer
+            className={` relative flex items-center gap-2 p-2 pl-4 rounded cursor-pointer
              max-sm:text-sm ${selectedUser?._id === user._id && "bg-[#282142]/50"}`}
           >
             <img
